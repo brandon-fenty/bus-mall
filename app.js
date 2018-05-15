@@ -6,6 +6,7 @@
 
 // Create an array to store all the pictures
 var allPictures = [];
+var totalClicks = 0;
 // Create the image elements for my image table
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
@@ -37,22 +38,25 @@ function Picture (src, name, htmlId) {
 // First img
 imgEl1.addEventListener('click', function() {
     allPictures[picture1Index].clicked++;
-    allPictures[picture1Index].displayCount++;
+    totalClicks++;
     console.table(allPictures);
+    console.log(totalClicks);
     chooseNewImgs();
 });
 // Second img
 imgEl2.addEventListener('click', function() {
     allPictures[picture2Index].clicked++;
-    allPictures[picture2Index].displayCount++;
+    totalClicks++;
     console.table(allPictures);
+    console.log(totalClicks);
     chooseNewImgs();
 });
 // Third img
 imgEl3.addEventListener('click', function() {
     allPictures[picture3Index].clicked++;
-    allPictures[picture3Index].displayCount++;
+    totalClicks++;
     console.table(allPictures);
+    console.log(totalClicks);
     chooseNewImgs();
 });
 
@@ -60,16 +64,20 @@ imgEl3.addEventListener('click', function() {
 // randomize images function ||
 // ==================++++++++++
 
-function chooseNewImgs (){
+function chooseNewImgs () {
     // First img
     picture1Index = Math.floor(Math.random() * allPictures.length);
     imgEl1.src = allPictures[picture1Index].imgSrc;
+    allPictures[picture1Index].displayCount++;
     // Second img
     picture2Index = Math.floor(Math.random() * allPictures.length);
     imgEl2.src = allPictures[picture2Index].imgSrc;
+    allPictures[picture2Index].displayCount++;
     // Third img
     picture3Index = Math.floor(Math.random() * allPictures.length);
     imgEl3.src = allPictures[picture3Index].imgSrc;
+    allPictures[picture3Index].displayCount++;
+      
 };
 
 // ==================+++++++
@@ -96,5 +104,9 @@ new Picture ('imgs/unicorn.jpg', 'Unicorn Meat', 'unicorn-meat');
 new Picture ('imgs/usb.gif', 'Tentacle USB Drive', 'tentacle-drive');
 new Picture ('imgs/water-can.jpg', 'Water Can', 'water-can');
 new Picture ('imgs/wine-glass.jpg', 'Egg Glass', 'wine-glass');
+
+// =================
+// function calls ||
+// =================
 
 chooseNewImgs();
