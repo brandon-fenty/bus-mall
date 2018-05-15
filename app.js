@@ -43,7 +43,6 @@ sectionEl.addEventListener('click', sectionCallback);
 // Callback function
 function sectionCallback(event) {
     if(event.target.id) {
-        console.log(event.target.id);
         totalClicks++;
         allPictures[event.target.id].clicked++;
         chooseNewImgs(); 
@@ -81,12 +80,15 @@ function chooseNewImgs () {
     
     // First img src + display count
     imgEl1.src = allPictures[picture1Index].imgSrc;
+    allPictures[picture1Index].displayCount++;
     imgEl1.id = picture1Index;
     // Second img src + display count
     imgEl2.src = allPictures[picture2Index].imgSrc;
+    allPictures[picture1Index].displayCount++;
     imgEl2.id = picture2Index;
     // Third img src + display count
     imgEl3.src = allPictures[picture3Index].imgSrc;
+    allPictures[picture1Index].displayCount++;
     imgEl3.id = picture3Index;
       
 };
