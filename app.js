@@ -7,17 +7,23 @@
 // Create an array to store all the pictures
 var allPictures = [];
 var totalClicks = 0;
+// var drawChart = false;
 // Create the image elements for my image table
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
 // Link to HTML
 var sectionEl = document.getElementById('img-table');
-var results = document.getElementById('selection-results');
+var resultsList = document.getElementById('selection-results');
 // Set a variable for the initial starting point of all images
 var picture1Index = 0;
 var picture2Index = 0;
 var picture3Index = 0;
+// chart variables
+var resultsChart;
+var drawChart = false;
+var productArr = [];
+var votesArr = [];
 
 // ==================+++
 // create constructor ||
@@ -61,7 +67,6 @@ function chooseNewImgs () {
 
     // Temporary storage for imgs
     var cantBeThis = [picture1Index, picture2Index, picture3Index];
-    console.log(cantBeThis);
 
     // First img 
     do {
@@ -92,19 +97,28 @@ function chooseNewImgs () {
     imgEl3.id = picture3Index;
       
 };
-
+// Render the results after completing 25 selections
 function renderResults () {
     for(var i in allPictures){
         var newLiEl = document.createElement('li');
         newLiEl.textContent = allPictures[i].imgName + ' clicked : ' + allPictures[i].clicked + ' times';
-        results.appendChild(newLiEl);
+        resultsList.appendChild(newLiEl);
     }
 };
-
+// Prevent images from cycling past 25 selections
 function stopAt25 () {
-    if (totalClicks === 25) {
+    if (totalClicks === 3) {
         renderResults();
         sectionEl.removeEventListener('click', sectionCallback);
+        chartData();
+        renderChart();
+    }
+};
+// Function to update information in chart data arrays
+function chartData () {
+    for (var i in allPictures) {
+        productArr[i] = allPictures[i].imgName;
+        votesArr[i] = allPictures[i].clicked;
     }
 };
 
@@ -132,6 +146,51 @@ new Picture ('imgs/unicorn.jpg', 'Unicorn Meat', 'unicorn-meat');
 new Picture ('imgs/usb.gif', 'Tentacle USB Drive', 'tentacle-drive');
 new Picture ('imgs/water-can.jpg', 'Water Can', 'water-can');
 new Picture ('imgs/wine-glass.jpg', 'Egg Glass', 'wine-glass');
+
+// =================+++++++++
+// create chart data       ||
+// rendered using chart.js ||
+// =================+++++++++
+
+// declare data variables
+var data = {
+    labels: productArr,
+    datasets: [{
+        data: votesArr,
+        label: 'Number of Votes',
+        backgroundColor: [
+            'blue'
+        ],
+        hoverBackgroundColor: [
+            'gold'
+        ]
+    }]
+};
+
+// render chart
+function renderChart() {
+    var ctx = document.getElementById('results-chart').getContext('2d');
+    resultsChart = new Chart(ctx, {
+        type: 'horizontalBar',
+        data: data,
+        options: {
+            responsive: false,
+            animation: {
+                duration: 1000,
+            }
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    max: 10,
+                    min: 0,
+                    stepSize: 1.0
+                }
+            }]
+        }
+    });
+    drawChart = true;
+}
 
 // =================
 // function calls ||
