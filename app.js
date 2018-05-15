@@ -11,10 +11,13 @@ var totalClicks = 0;
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
 var imgEl3 = document.getElementById('product3');
+// Link to HTML
+var sectionEl = document.getElementById('img-table');
+var results = document.getElementById('selection-results');
 // Set a variable for the initial starting point of all images
 var picture1Index = 0;
-var picture2Index = 1;
-var picture3Index = 2;
+var picture2Index = 0;
+var picture3Index = 0;
 
 // ==================+++
 // create constructor ||
@@ -31,53 +34,76 @@ function Picture (src, name, htmlId) {
     allPictures.push(this);
 };
 
-// ==================+++++++
-// create event listeners ||
-// ==================+++++++
+// ==================++++++
+// create event listener ||
+// ==================++++++
 
-// First img
-imgEl1.addEventListener('click', function() {
-    allPictures[picture1Index].clicked++;
-    totalClicks++;
-    console.table(allPictures);
-    console.log(totalClicks);
-    chooseNewImgs();
-});
-// Second img
-imgEl2.addEventListener('click', function() {
-    allPictures[picture2Index].clicked++;
-    totalClicks++;
-    console.table(allPictures);
-    console.log(totalClicks);
-    chooseNewImgs();
-});
-// Third img
-imgEl3.addEventListener('click', function() {
-    allPictures[picture3Index].clicked++;
-    totalClicks++;
-    console.table(allPictures);
-    console.log(totalClicks);
-    chooseNewImgs();
-});
+// Define the event listener
+sectionEl.addEventListener('click', sectionCallback);
+// Callback function
+function sectionCallback(event) {
+    if(event.target.id) {
+        console.log(event.target.id);
+        totalClicks++;
+        allPictures[event.target.id].clicked++;
+        chooseNewImgs(); 
+    } else {
+        alert('Click on an image only.');
+    }  
+};
 
-// ==================++++++++++
-// randomize images function ||
-// ==================++++++++++
+// ==================+
+// helper functions ||
+// ==================+
 
 function chooseNewImgs () {
-    // First img
-    picture1Index = Math.floor(Math.random() * allPictures.length);
-    imgEl1.src = allPictures[picture1Index].imgSrc;
-    allPictures[picture1Index].displayCount++;
+    // Call function to monitor clicks
+    stopAt25();
+
+    // Temporary storage for imgs
+    var cantBeThis = [picture1Index, picture2Index, picture3Index];
+    console.log(cantBeThis);
+
+    // First img 
+    do {
+        picture1Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture1Index));
+    cantBeThis.push(picture1Index);
     // Second img
-    picture2Index = Math.floor(Math.random() * allPictures.length);
-    imgEl2.src = allPictures[picture2Index].imgSrc;
-    allPictures[picture2Index].displayCount++;
+    do {
+        picture2Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture2Index));
+    cantBeThis.push(picture2Index)
     // Third img
-    picture3Index = Math.floor(Math.random() * allPictures.length);
+    do {
+        picture3Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture3Index));
+    
+    // First img src + display count
+    imgEl1.src = allPictures[picture1Index].imgSrc;
+    imgEl1.id = picture1Index;
+    // Second img src + display count
+    imgEl2.src = allPictures[picture2Index].imgSrc;
+    imgEl2.id = picture2Index;
+    // Third img src + display count
     imgEl3.src = allPictures[picture3Index].imgSrc;
-    allPictures[picture3Index].displayCount++;
+    imgEl3.id = picture3Index;
       
+};
+
+function renderResults () {
+    for(var i in allPictures){
+        var newLiEl = document.createElement('li');
+        newLiEl.textContent = allPictures[i].imgName + ' clicked : ' + allPictures[i].clicked + ' times';
+        results.appendChild(newLiEl);
+    }
+};
+
+function stopAt25 () {
+    if (totalClicks === 25) {
+        renderResults();
+        sectionEl.removeEventListener('click', sectionCallback);
+    }
 };
 
 // ==================+++++++
