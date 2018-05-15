@@ -1,0 +1,138 @@
+'use strict';
+
+// ===========================
+// declare global variables ||
+// ===========================
+
+// Create an array to store all the pictures
+var allPictures = [];
+var totalClicks = 0;
+// Create the image elements for my image table
+var imgEl1 = document.getElementById('product1');
+var imgEl2 = document.getElementById('product2');
+var imgEl3 = document.getElementById('product3');
+// Link to HTML
+var sectionEl = document.getElementById('img-table');
+var results = document.getElementById('selection-results');
+// Set a variable for the initial starting point of all images
+var picture1Index = 0;
+var picture2Index = 0;
+var picture3Index = 0;
+
+// ==================+++
+// create constructor ||
+// ==================+++
+
+function Picture (src, name, htmlId) {
+    this.imgSrc = src;
+    this.imgName = name;
+    this.htmlId = htmlId;
+    // Create click tracker
+    this.clicked = 0;
+    this.displayCount = 0;
+    // Push data to array
+    allPictures.push(this);
+};
+
+// ==================++++++
+// create event listener ||
+// ==================++++++
+
+// Define the event listener
+sectionEl.addEventListener('click', sectionCallback);
+// Callback function
+function sectionCallback(event) {
+    if(event.target.id) {
+        console.log(event.target.id);
+        totalClicks++;
+        allPictures[event.target.id].clicked++;
+        chooseNewImgs(); 
+    } else {
+        alert('Click on an image only.');
+    }  
+};
+
+// ==================+
+// helper functions ||
+// ==================+
+
+function chooseNewImgs () {
+    // Call function to monitor clicks
+    stopAt25();
+
+    // Temporary storage for imgs
+    var cantBeThis = [picture1Index, picture2Index, picture3Index];
+    console.log(cantBeThis);
+
+    // First img 
+    do {
+        picture1Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture1Index));
+    cantBeThis.push(picture1Index);
+    // Second img
+    do {
+        picture2Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture2Index));
+    cantBeThis.push(picture2Index)
+    // Third img
+    do {
+        picture3Index = Math.floor(Math.random() * allPictures.length);
+    } while (cantBeThis.includes(picture3Index));
+    
+    // First img src + display count
+    imgEl1.src = allPictures[picture1Index].imgSrc;
+    imgEl1.id = picture1Index;
+    // Second img src + display count
+    imgEl2.src = allPictures[picture2Index].imgSrc;
+    imgEl2.id = picture2Index;
+    // Third img src + display count
+    imgEl3.src = allPictures[picture3Index].imgSrc;
+    imgEl3.id = picture3Index;
+      
+};
+
+function renderResults () {
+    for(var i in allPictures){
+        var newLiEl = document.createElement('li');
+        newLiEl.textContent = allPictures[i].imgName + ' clicked : ' + allPictures[i].clicked + ' times';
+        results.appendChild(newLiEl);
+    }
+};
+
+function stopAt25 () {
+    if (totalClicks === 25) {
+        renderResults();
+        sectionEl.removeEventListener('click', sectionCallback);
+    }
+};
+
+// ==================+++++++
+// create image instances ||
+// ==================+++++++
+
+new Picture ('imgs/bag.jpg', 'R2D2 Luggage', 'r2d2');
+new Picture ('imgs/banana.jpg', 'Banana Slicer', 'nana-slicer');
+new Picture ('imgs/bathroom.jpg', 'iPad TP Stand', 'tp-stand');
+new Picture ('imgs/boots.jpg', 'Rain Flops', 'rain-flops');
+new Picture ('imgs/breakfast.jpg', 'Do it all Breakfast Machine', 'breakfast-machine');
+new Picture ('imgs/bubblegum.jpg', 'Meatball Gum', 'meatball-gum');
+new Picture ('imgs/chair.jpg', 'Chair', 'idiot-chair');
+new Picture ('imgs/cthulhu.jpg', 'Cthulhu Statue', 'cthulhu');
+new Picture ('imgs/dog-duck.jpg', 'Doggo Duck Lips', 'doggo-lips');
+new Picture ('imgs/dragon.jpg', 'Dragon Meat', 'dragon-meat');
+new Picture ('imgs/pen.jpg', 'Penware Caps', 'penware');
+new Picture ('imgs/pet-sweep.jpg', 'Pet Swiffer', 'pet-swiffer');
+new Picture ('imgs/scissors.jpg', 'Pizza Scissors', 'pizza-scissors');
+new Picture ('imgs/shark.jpg', 'Shark Attack Sleeping Bag', 'shark-bag');
+new Picture ('imgs/sweep.png', 'Baby Swiffer', 'baby-swiffer');
+new Picture ('imgs/tauntaun.jpg', 'TaunTaun Blanket', 'tauntaun');
+new Picture ('imgs/unicorn.jpg', 'Unicorn Meat', 'unicorn-meat');
+new Picture ('imgs/usb.gif', 'Tentacle USB Drive', 'tentacle-drive');
+new Picture ('imgs/water-can.jpg', 'Water Can', 'water-can');
+new Picture ('imgs/wine-glass.jpg', 'Egg Glass', 'wine-glass');
+
+// =================
+// function calls ||
+// =================
+
+chooseNewImgs();
