@@ -107,7 +107,7 @@ function renderResults () {
 };
 // Prevent images from cycling past 25 selections
 function stopAt25 () {
-    if (totalClicks === 3) {
+    if (totalClicks === 25) {
         renderResults();
         sectionEl.removeEventListener('click', sectionCallback);
         chartData();
