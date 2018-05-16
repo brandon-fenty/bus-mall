@@ -133,8 +133,8 @@ new Picture ('imgs/usb.gif', 'Tentacle USB Drive', 'tentacle-drive');
 new Picture ('imgs/water-can.jpg', 'Water Can', 'water-can');
 new Picture ('imgs/wine-glass.jpg', 'Egg Glass', 'wine-glass');
 
-// =================
-// function calls ||
-// =================
+// ====================================+++++++++++
+// begin script after checking for local storage||
+// ====================================+++++++++++
 
 chooseNewImgs();
