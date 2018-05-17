@@ -9,10 +9,24 @@
     <title>Bus-Mall Case Study</title>
     <link type="text/css" rel="stylesheet" href="reset.css" />
     <link type="text/css" rel="stylesheet" href="style.css" />
+    <!-- chart.js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 
 </head>
 
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="survey.html">Survey</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+            </ul>
+        </nav>
+
+        <h1>BusMall Product Study</h1>
+    </header>
 
     <main>
         <!-- image grid -->
@@ -23,10 +37,13 @@
                 <img id="product3" src="" width="100%" />
             </div>
         </section>
+        <!-- results list -->
+        <canvas id="results-chart" width="900px" height="400px"></canvas>
 
-        <ul id="selection-results">
+        <ul id="selection-results"></ul>
+        <!-- clear button -->
+        <button id="clear-survey">Clear Results</button>
 
-        </ul>
         <script src="app.js"></script>
     </main>
     
