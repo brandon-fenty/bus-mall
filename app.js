@@ -15,6 +15,7 @@ var imgEl3 = document.getElementById('product3');
 // Link to HTML
 var sectionEl = document.getElementById('img-table');
 var resultsList = document.getElementById('selection-results');
+var clearSurveyButton = document.getElementById('clear-survey');
 // Set a variable for the initial starting point of all images
 var picture1Index = 0;
 var picture2Index = 0;
@@ -57,6 +58,13 @@ function sectionCallback(event) {
     }  
 };
 
+// clear button
+clearSurveyButton.addEventListener('click', clearButton);
+
+function clearButton(event) {
+    localStorage.clear();
+};
+
 // ==================+
 // helper functions ||
 // ==================+
@@ -94,21 +102,15 @@ function chooseNewImgs () {
     // Third img src + display count
     imgEl3.src = allPictures[picture3Index].imgSrc;
     allPictures[picture1Index].displayCount++;
-    imgEl3.id = picture3Index;
-      
+    imgEl3.id = picture3Index;      
 };
-// Render the results after completing 25 selections
-function renderResults () {
-    for(var i in allPictures){
-        var newLiEl = document.createElement('li');
-        newLiEl.textContent = allPictures[i].imgName + ' clicked : ' + allPictures[i].clicked + ' times';
-        resultsList.appendChild(newLiEl);
-    }
-};
+
 // Prevent images from cycling past 25 selections
 function stopAt25 () {
     if (totalClicks === 25) {
-        renderResults();
+        // Store data
+        localStorage.setItem('allPictures', JSON.stringify(allPictures));
+        // render chart
         sectionEl.removeEventListener('click', sectionCallback);
         chartData();
         renderChart();
@@ -125,6 +127,86 @@ function chartData () {
 // ==================+++++++
 // create image instances ||
 // ==================+++++++
+function initializePage() {
+    new Picture ('imgs/bag.jpg', 'R2D2 Luggage', 'r2d2');
+    new Picture ('imgs/banana.jpg', 'Banana Slicer', 'nana-slicer');
+    new Picture ('imgs/bathroom.jpg', 'iPad TP Stand', 'tp-stand');
+    new Picture ('imgs/boots.jpg', 'Rain Flops', 'rain-flops');
+    new Picture ('imgs/breakfast.jpg', 'Do it all Breakfast Machine', 'breakfast-machine');
+    new Picture ('imgs/bubblegum.jpg', 'Meatball Gum', 'meatball-gum');
+    new Picture ('imgs/chair.jpg', 'Chair', 'idiot-chair');
+    new Picture ('imgs/cthulhu.jpg', 'Cthulhu Statue', 'cthulhu');
+    new Picture ('imgs/dog-duck.jpg', 'Doggo Duck Lips', 'doggo-lips');
+    new Picture ('imgs/dragon.jpg', 'Dragon Meat', 'dragon-meat');
+    new Picture ('imgs/pen.jpg', 'Penware Caps', 'penware');
+    new Picture ('imgs/pet-sweep.jpg', 'Pet Swiffer', 'pet-swiffer');
+    new Picture ('imgs/scissors.jpg', 'Pizza Scissors', 'pizza-scissors');
+    new Picture ('imgs/shark.jpg', 'Shark Attack Sleeping Bag', 'shark-bag');
+    new Picture ('imgs/sweep.png', 'Baby Swiffer', 'baby-swiffer');
+    new Picture ('imgs/tauntaun.jpg', 'TaunTaun Blanket', 'tauntaun');
+    new Picture ('imgs/unicorn.jpg', 'Unicorn Meat', 'unicorn-meat');
+    new Picture ('imgs/usb.gif', 'Tentacle USB Drive', 'tentacle-drive');
+    new Picture ('imgs/water-can.jpg', 'Water Can', 'water-can');
+    new Picture ('imgs/wine-glass.jpg', 'Egg Glass', 'wine-glass');
+};
+
+// =================+++++++++
+// create chart data       ||
+// rendered using chart.js ||
+// =================+++++++++
+
+// declare data variables
+var data = {
+    labels: productArr,
+    datasets: [{
+        data: votesArr,
+        label: 'Number of Votes',
+        backgroundColor: [
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold',
+            'gold'
+        ],
+        hoverBackgroundColor: [
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green',
+            'green'
+        ]
+    }]
+};
 
 new Picture ('imgs/bag.jpg', 'R2D2 Luggage', 'r2d2');
 new Picture ('imgs/banana.jpg', 'Banana Slicer', 'nana-slicer');
@@ -190,10 +272,19 @@ function renderChart() {
         }
     });
     drawChart = true;
-}
+};
 
-// =================
-// function calls ||
-// =================
+// ===============================================
+// page initalization & check for local storage ||
+// ===============================================
 
-chooseNewImgs();
+// Checking to see if there is already a session & initialize
+if(localStorage.allPictures) {
+    console.log('Loading previous session');
+    allPictures = JSON.parse(localStorage.getItem('allPictures'));
+    chooseNewImgs();
+} else {
+    console.log('Starting new session');
+    initializePage();
+    chooseNewImgs();
+};
