@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bus-Mall Case Study</title>
+    <link type="text/css" rel="stylesheet" href="reset.css" />
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <!-- chart.js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="survey.html">Survey</a></li>
+                <li><a href="products.html">Products</a></li>
+            </ul>
+        </nav>
+
+        <h1>BusMall Product Study</h1>
+    </header>
+
+    <main>
+        <div>
+            <h2>Instructions</h2>
+            
+            <p>For this study, you will be presented with 20 different items in random combinations of 3. To complete the survey, simply click the image of the product you would be most likely to purchase of the 3 given choices. Once you have made 25 selections, the survey will be over and you will be able to see the results.</p>
+            
+        </div>
+        <!-- image grid -->
+        <section id="img-table">
+            <div>
+                <img id="product1" src="" width="100%" />
+                <img id="product2" src="" width="100%" />
+                <img id="product3" src="" width="100%" />
+            </div>
+        </section>
+        <!-- chart results -->
+        <div>
+            <canvas id="results-chart" width="900px" height="400px"></canvas>
+        </div>
+        <!-- clear button -->
+        <button id="clear-survey">Clear Results</button>
+
+
+        <script src="app.js"></script>
+    </main>
+    
+</body>
+
+</html>

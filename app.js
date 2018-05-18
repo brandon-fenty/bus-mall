@@ -7,7 +7,6 @@
 // Create an array to store all the pictures
 var allPictures = [];
 var totalClicks = 0;
-// var drawChart = false;
 // Create the image elements for my image table
 var imgEl1 = document.getElementById('product1');
 var imgEl2 = document.getElementById('product2');
@@ -22,7 +21,6 @@ var picture2Index = 0;
 var picture3Index = 0;
 // chart variables
 var resultsChart;
-var drawChart = false;
 var productArr = [];
 var votesArr = [];
 
@@ -63,6 +61,8 @@ clearSurveyButton.addEventListener('click', clearButton);
 
 function clearButton(event) {
     localStorage.clear();
+    // refresh page
+    window.location.reload(true);
 };
 
 // ==================+
@@ -208,26 +208,6 @@ var data = {
     }]
 };
 
-// =================+++++++++
-// create chart data       ||
-// rendered using chart.js ||
-// =================+++++++++
-
-// declare data variables
-var data = {
-    labels: productArr,
-    datasets: [{
-        data: votesArr,
-        label: 'Number of Votes',
-        backgroundColor: [
-            'blue'
-        ],
-        hoverBackgroundColor: [
-            'gold'
-        ]
-    }]
-};
-
 // render chart
 function renderChart() {
     var ctx = document.getElementById('results-chart').getContext('2d');
@@ -250,7 +230,6 @@ function renderChart() {
             }]
         }
     });
-    drawChart = true;
 };
 
 // ===============================================
