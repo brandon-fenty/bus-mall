@@ -8,7 +8,7 @@ body {
 }
 
 img {
-    width: 200px;
+    width: 20%;
     padding: 50px;
 }
 
@@ -54,19 +54,20 @@ nav {
 .menu-content {
     display: none;
     position: absolute;
-    color: #61892f;
     background-color: #6b6e70;
+    padding: 20px 0px;
     z-index: 1;
 }
 
 .menu-content a {
-    color: #86c232;
+    color: white;
     text-decoration: none;
     font-size: 16px;
 }
 
 .drop-menu:hover .menu-content {
     display: block;
+    text-align: center;
 }
 
 .menu-content a:hover {
@@ -89,7 +90,9 @@ nav {
 
 .container-1 a {
     text-decoration: none;
-    color: #86c232;
+    color: white;
+    padding: 10px 10px;
+    background-color: #86c232;
 }
 
 .container-1 h1 {
@@ -99,10 +102,7 @@ nav {
 .container-1 p {
     color: #6b6e70;
     line-height: 22px;
-}
-
-.home-button {
-    width: 200px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .home-header {
@@ -111,7 +111,41 @@ nav {
 }
 
 .home-container {
-    width: 510px;
+    max-width: 510px;
     margin: 0 auto;
 }
+
+/* survey styling */
+
+.container-2 {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.container-2 button {
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: #86c232;
+    width: 100px;
+}
+
+.survey-container {
+    background-color: #9999;
+    text-align: center;
+    padding: 20px;
+}
+
+.survey-container h1 {
+    color: #86c232;
+    font-size: 34px;
+    padding: 10px;
+}
+
+.survey-container p {
+    font-size: 18px;
+    font-family: helvetica, sans-serif;
+    color: white; 
+}
+
 

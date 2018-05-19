@@ -28,16 +28,16 @@
             </nav>
     </header>
 
-    <main>
-        <div>
-            <h2>Instructions</h2>
+    <main class="container-2">
+        <div class="survey-container">
+            <h1>INSTRUCTIONS</h1>
             
             <p>For this study, you will be presented with 20 different items in random combinations of 3. To complete the survey, simply click the image of the product you would be most likely to purchase of the 3 given choices. Once you have made 25 selections, the survey will be over and you will be able to see the results.</p>
             
         </div>
         <!-- image grid -->
-        <section id="img-table">
-            <div>
+        <section id="img-table" class="survey-container">
+            <div class="center">
                 <img id="product1" src="" width="100%" />
                 <img id="product2" src="" width="100%" />
                 <img id="product3" src="" width="100%" />
@@ -46,10 +46,8 @@
         <!-- chart results -->
         <div>
             <canvas id="results-chart" width="900px" height="400px"></canvas>
+            <button id="clear-survey" class="container-2">CLEAR RESULTS</button>
         </div>
-        <!-- clear button -->
-        <button id="clear-survey">Clear Results</button>
-
 
         <script src="app.js"></script>
     </main>
