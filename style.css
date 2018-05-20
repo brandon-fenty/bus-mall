@@ -1,5 +1,170 @@
+/* global styling */
+/* color: #86c232; */
+
+body {
+    background-color: #222629;
+    font-family: 'Roboto', sans-serif;
+    background-image: url("imgs/vector-bg.png");
+}
 
 img {
-    width: 200px;
+    width: 20%;
     padding: 50px;
 }
+
+.float-left {
+    float: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+
+/* navbar styling */
+
+nav {
+    height: 75px;
+}
+
+.drop-menu {
+    display: inline-block;
+    position: relative;
+}
+
+
+.drop-button {
+    padding: 15px;
+    background-color: #86c232;
+    color: white;
+    border: none;
+    font-size: 18px;
+    transition: 600ms;
+}
+
+.drop-button:hover {
+    color: #6b6e70;
+    background-color: white;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #6b6e70;
+    padding: 20px 0px;
+    z-index: 1;
+}
+
+.menu-content a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.drop-menu:hover .menu-content {
+    display: block;
+    text-align: center;
+}
+
+.menu-content a:hover {
+    color: #6b6e70;
+    background-color: white;
+}
+
+/* home page styling */
+
+.container-1 {
+    width: 1024px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.container-1 img {
+    width: 400px;
+    margin-top: 90px;
+}
+
+.container-1 a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 10px;
+    background-color: #86c232;
+}
+
+.container-1 h1 {
+    margin-top: 120px;
+}
+
+.container-1 p {
+    color: #6b6e70;
+    line-height: 28px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 24px;
+}
+
+.home-header {
+    font-size: 72px;
+    color: white;
+}
+
+.home-container {
+    max-width: 510px;
+    margin: 0 auto;
+}
+
+/* survey styling */
+
+.container-2 {
+    width: 1024px;
+    margin: 0 auto;
+}
+
+.container-2 button {
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: #86c232;
+    width: 100px;
+}
+
+.survey-container {
+    background-color: #9999;
+    text-align: center;
+    padding: 20px;
+}
+
+.survey-container h1 {
+    color: #86c232;
+    font-size: 34px;
+    padding: 10px;
+}
+
+.survey-container p {
+    font-size: 24px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: white; 
+}
+
+
+/* catalog styling */
+
+.container-3 {
+    width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container-3 h1 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}
+
+.container-3 img {
+    display: inline-block;
+}
+

@@ -11,32 +11,34 @@
     <link type="text/css" rel="stylesheet" href="style.css" />
     <!-- chart.js  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <!-- font sourced from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico|Roboto" rel="stylesheet">
 
 </head>
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="survey.html">Survey</a></li>
-                <li><a href="products.html">Products</a></li>
-            </ul>
-        </nav>
-
-        <h1>BusMall Product Study</h1>
+            <nav>
+                <div class="drop-menu">
+                    <button class="drop-button">MENU</button>
+                    <div class="menu-content">
+                        <a href="index.html">Home</a>
+                        <a href="survey.html">Survey</a>
+                    </div>
+                </div>
+            </nav>
     </header>
 
-    <main>
-        <div>
-            <h2>Instructions</h2>
+    <main class="container-2">
+        <div class="survey-container">
+            <h1>INSTRUCTIONS</h1>
             
             <p>For this study, you will be presented with 20 different items in random combinations of 3. To complete the survey, simply click the image of the product you would be most likely to purchase of the 3 given choices. Once you have made 25 selections, the survey will be over and you will be able to see the results.</p>
             
         </div>
         <!-- image grid -->
-        <section id="img-table">
-            <div>
+        <section id="img-table" class="survey-container">
+            <div class="center">
                 <img id="product1" src="" width="100%" />
                 <img id="product2" src="" width="100%" />
                 <img id="product3" src="" width="100%" />
@@ -46,9 +48,10 @@
         <div>
             <canvas id="results-chart" width="900px" height="400px"></canvas>
         </div>
-        <!-- clear button -->
-        <button id="clear-survey">Clear Results</button>
-
+        <div class="buttons">
+            <button id="restart-survey" class="center">RESTART SURVEY</button>
+            <button id="clear-survey" class="center">CLEAR RESULTS</button>
+        </div>
 
         <script src="app.js"></script>
     </main>

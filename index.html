@@ -9,34 +9,39 @@
     <title>Bus-Mall Case Study</title>
     <link type="text/css" rel="stylesheet" href="reset.css" />
     <link type="text/css" rel="stylesheet" href="style.css" />
-
+    <!-- font sourced from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico|Roboto" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="survey.html">Survey</a></li>
-                <li><a href="products.html">Products</a></li>
-            </ul>
+            <div class="drop-menu">
+                <button class="drop-button">MENU</button>
+                <div class="menu-content">
+                    <a href="index.html">Home</a>
+                    <a href="survey.html">Survey</a>
+                </div>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <div>
-            <h1>BusMall Product Study</h1>
+    <main class="container-1">
+
+        <div class="float-left home-container">
+            <img src="imgs/hero.png" alt="BusMall Logo" title="BusMall Logo" />
         </div>
 
-        <div>
-            <img src="" alt="BusMall Logo" title="BusMall Logo" />
+        <div class="home-container float-left">
+            <h1 class="home-header">HELLO!</h1>
         </div>
 
-        <div>
-            <p>Welcome to our product study, we are a new startup named BusMall.</p>
+        <div  class="home-container float-left">
+            <p>Welcome to our product study, we are a new startup named BusMall. We aim to provide a shopping service for commuters that need a way to pass their time on long bus rides! Since we are a startup, we need your help to figure out which products our future customers would be most interested in.<br /> <br /></p>
+
+            <a href="survey.html">CLICK HERE TO BEGIN SURVEY</a>
         </div>
 
-        <button><a href="survey.html">Click Here to Begin Survey</a></button>
     </main>
     
 </body>
