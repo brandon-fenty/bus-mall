@@ -15,6 +15,7 @@ var imgEl3 = document.getElementById('product3');
 var sectionEl = document.getElementById('img-table');
 var resultsList = document.getElementById('selection-results');
 var clearSurveyButton = document.getElementById('clear-survey');
+var restartSurveyButton = document.getElementById('restart-survey');
 // Set a variable for the initial starting point of all images
 var picture1Index = 0;
 var picture2Index = 0;
@@ -55,6 +56,13 @@ function sectionCallback(event) {
         alert('Click on an image only.');
     }  
 };
+
+// restart survey button
+restartSurveyButton.addEventListener('click', restartButton);
+
+function restartButton(event) {
+    window.location.reload(true);
+}
 
 // clear button
 clearSurveyButton.addEventListener('click', clearButton);

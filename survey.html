@@ -11,6 +11,8 @@
     <link type="text/css" rel="stylesheet" href="style.css" />
     <!-- chart.js  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <!-- font sourced from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Pacifico|Roboto" rel="stylesheet">
 
 </head>
 
@@ -22,7 +24,6 @@
                     <div class="menu-content">
                         <a href="index.html">Home</a>
                         <a href="survey.html">Survey</a>
-                        <a href="products.html">Products</a>
                     </div>
                 </div>
             </nav>
@@ -46,7 +47,10 @@
         <!-- chart results -->
         <div>
             <canvas id="results-chart" width="900px" height="400px"></canvas>
-            <button id="clear-survey" class="container-2">CLEAR RESULTS</button>
+        </div>
+        <div class="buttons">
+            <button id="restart-survey" class="center">RESTART SURVEY</button>
+            <button id="clear-survey" class="center">CLEAR RESULTS</button>
         </div>
 
         <script src="app.js"></script>
